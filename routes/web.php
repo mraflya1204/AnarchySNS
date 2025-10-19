@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SNSController;
 
-Route::get('/', fn () => redirect()->route('sns.index'));
-
-// about page
+Route::get('/', [SNSController::class, 'index'])->name('sns.index');
+Route::get('/create', [SNSController::class, 'create'])->name('sns.create');
+Route::post('/', [SNSController::class, 'store'])->name('sns.store');
+Route::get('/list', [SNSController::class, 'list'])->name('sns.list');
 Route::get('/about', [SNSController::class, 'about'])->name('sns.about');
-
-Route::resource('sns', SNSController::class)->only([
-    'index', 'create', 'store', 'show', 'destroy'
-]);
+Route::get('/{sns}', [SNSController::class, 'show'])->name('sns.show');
+Route::delete('/{sns}', [SNSController::class, 'destroy'])->name('sns.destroy');

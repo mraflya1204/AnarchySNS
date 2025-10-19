@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Identifier extends Model
@@ -13,6 +14,7 @@ class Identifier extends Model
         'id',
     ];
 
+    use HasFactory;
     protected static function booted()
     {
         static::creating(function ($model) {

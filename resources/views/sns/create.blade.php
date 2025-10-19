@@ -7,7 +7,7 @@
     <!-- Post -->
     <label for="post">Post:</label>
     <textarea
-      rows="5"
+      rows="3"
       id="post" 
       name="post" 
       required
@@ -18,7 +18,7 @@
     <!-- Username -->
     <label for="post">Username:</label>
     <textarea
-      rows="5"
+      rows="2"
       id="username" 
       name="username" 
       required
@@ -26,7 +26,7 @@
     {{ old('username') }}
     </textarea>
 
-    <button type="submit" class="btn mt-4">Create Ninja</button>
+    <button type="submit" class="btn mt-4">Post</button>
 
     <!-- validation errors -->
     @if ($errors->any())

@@ -20,7 +20,10 @@ class SNSController extends Controller
         $sns = SNS::with('identifier')->orderBy('created_at', 'desc')->paginate(10);
         return view('sns.index', ["sns" => $sns]);
     }
-    
+    public function list(){
+        $identifiers = Identifier::orderBy('created_at', 'desc')->paginate(10);
+        return view('sns.list', ['identifiers' => $identifiers]);
+    }
     public function show(SNS $sns){
         $sns->load('identifier');
         return view('sns.show', ['sns' => $sns]);
@@ -51,8 +54,14 @@ class SNSController extends Controller
         return redirect()->route('sns.index')->with('success', 'Posted Successfully!');
     }
 
-    public function destroy(SNS $sns){
-        $sns->delete();
-        return redirect()->route('sns.index')->with('success', 'Post deleted successfully!');
+    public function destroy(Request $request, SNS $sns){
+        $submittedIdentifier = $request->input('identifier');
+
+        if ($submittedIdentifier === $sns->identifier_id) {
+            $sns->delete();
+            return redirect()->route('sns.index')->with('success', 'Post deleted successfully!');
+        } else {
+            return redirect()->route('sns.index')->with('fail', 'Incorrect identifier. Post not deleted.');
+        }
     }
 }

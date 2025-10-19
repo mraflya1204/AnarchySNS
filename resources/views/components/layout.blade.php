@@ -12,12 +12,17 @@
         {{ session('success') }}
     </div>
 @endif
-
+@if (session('fail'))
+        <div class="bg-red-500 text-white p-4 text-center">
+            {{ session('fail') }}
+        </div>
+@endif
     <header>
         <nav>
-            <h1>Ninja Network</h1>
+            <h1>AnarchySNS</h1>
             <a href="{{ route('sns.index') }}">Home</a>
             <a href="{{ route('sns.create') }}">Create New Post</a> 
+            <a href="{{ route('sns.list') }}">Identifier List</a>
             <a href="/about">About</a>
         </nav>
     </header>

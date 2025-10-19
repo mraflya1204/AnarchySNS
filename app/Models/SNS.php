@@ -10,7 +10,6 @@ class SNS extends Model
     protected $table = 'sns';
 
     protected $fillable = ['post', 'username', 'identifier_id'];
-    /** @use HasFactory<\Database\Factories\NinjaFactory> */
     use HasFactory;
 
     public function identifier(){
