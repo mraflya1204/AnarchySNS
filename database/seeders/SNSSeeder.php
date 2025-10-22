@@ -11,14 +11,17 @@ class SNSSeeder extends Seeder
 {
     public function run(): void
     {
-        $identifierIds = Identifier::pluck('id')->shuffle();
-        $postCount = 1000;
+        //$identifierIds = Identifier::pluck('id')->shuffle();
+        //$postCount = 1000;
 
-        SNS::factory()
-            ->count($postCount)
-            ->state(new Sequence(
-                ...$identifierIds->map(fn ($id) => ['identifier_id' => $id])->all()
-            ))
-            ->create();
+        //SNS::factory()
+        //    ->count($postCount)
+        //    ->state(new Sequence(
+        //        ...$identifierIds->map(fn ($id) => ['identifier_id' => $id])->all()
+        //    ))
+        //    ->create();
+
+        SNS::factory()->count(1000)->create();
+
     }
 }

@@ -38,10 +38,8 @@ class SNSController extends Controller
             'username' => 'required|string|min:3|max:50',
         ]);
 
-        // pick any random identifier (overlap allowed)
         $identifier = Identifier::inRandomOrder()->first();
 
-        // if there are no identifiers yet, create one so identifier_id is never NULL
         if (! $identifier) {
             $identifier = new Identifier();
             $identifier->save();
